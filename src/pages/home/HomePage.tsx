@@ -3,6 +3,8 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import styles from './HomePage.module.css'
 
 import introduction from '../../../book/引言.md?raw'
+import foundationsOverview from '../../../book/第一部分-安全问题怎样被描述/README.md?raw'
+import protectAssets from '../../../book/第一部分-安全问题怎样被描述/01-先说清楚要保护什么.md?raw'
 import cryptoOverview from '../../../book/第二部分-密码学基础/README.md?raw'
 import randomness from '../../../book/第二部分-密码学基础/03-随机数、秘密、盐与Nonce.md?raw'
 import hashes from '../../../book/第二部分-密码学基础/04-哈希、MAC与密码存储.md?raw'
@@ -10,11 +12,13 @@ import integrity from '../../../book/第二部分-密码学基础/05-加密还�
 import keys from '../../../book/第二部分-密码学基础/06-公私钥、数字签名与证书.md?raw'
 import tls from '../../../book/第二部分-密码学基础/07-TLS与密钥生命周期.md?raw'
 
-type BookPart = '导言' | '第二部分'
+type BookPart = '导言' | '第一部分' | '第二部分'
 type Chapter = { id: string; part: BookPart; title: string; description: string; source: string }
 
 const chapters: Chapter[] = [
   { id: 'introduction', part: '导言', title: '引言', description: '从安全问题的隐藏边界开始，建立一套可复用的工程判断方法。', source: introduction },
+  { id: 'foundations', part: '第一部分', title: '第一部分导读', description: '先说明资产、损失和信任边界，再进入具体安全机制。', source: foundationsOverview },
+  { id: 'protect-assets', part: '第一部分', title: '先说清楚要保护什么', description: '从资产和损失开始，建立安全讨论的共同语言。', source: protectAssets },
   { id: 'crypto', part: '第二部分', title: '第二部分导读', description: '在不展开完整数学推导的前提下，建立密码学的工程判断。', source: cryptoOverview },
   { id: 'randomness', part: '第二部分', title: '随机数、秘密、盐与 Nonce', description: '理解猜测、重放、密码存储和加密中的不同随机值。', source: randomness },
   { id: 'hashes', part: '第二部分', title: '哈希、MAC 与密码存储', description: '同样是摘要，为什么不能互换。', source: hashes },
@@ -23,7 +27,7 @@ const chapters: Chapter[] = [
   { id: 'tls', part: '第二部分', title: 'TLS 与密钥生命周期', description: '把协议、证书和密钥的生命周期放回完整系统。', source: tls },
 ]
 
-const partOrder: BookPart[] = ['导言', '第二部分']
+const partOrder: BookPart[] = ['导言', '第一部分', '第二部分']
 
 function titleFromMarkdown(source: string) { return source.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? '未命名章节' }
 
