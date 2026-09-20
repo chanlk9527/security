@@ -9,62 +9,25 @@ import hashes from '../../../book/第二部分-密码学基础/04-哈希、MAC�
 import integrity from '../../../book/第二部分-密码学基础/05-加密还必须考虑完整性.md?raw'
 import keys from '../../../book/第二部分-密码学基础/06-公私钥、数字签名与证书.md?raw'
 import tls from '../../../book/第二部分-密码学基础/07-TLS与密钥生命周期.md?raw'
-import architecture from '../../../docs/架构安全性/00-架构安全性总览.md?raw'
-import threatModel from '../../../docs/架构安全性/01-威胁建模与安全原则.md?raw'
-import authentication from '../../../docs/架构安全性/02-认证.md?raw'
-import authorization from '../../../docs/架构安全性/03-授权.md?raw'
-import credentials from '../../../docs/架构安全性/04-凭证.md?raw'
-import confidentiality from '../../../docs/架构安全性/05-保密.md?raw'
-import secrets from '../../../docs/架构安全性/06-密钥与秘密管理.md?raw'
-import privacy from '../../../docs/架构安全性/07-数据保护与隐私.md?raw'
-import transport from '../../../docs/架构安全性/08-传输.md?raw'
-import validation from '../../../docs/架构安全性/09-验证.md?raw'
-import apiSecurity from '../../../docs/架构安全性/10-应用与API安全.md?raw'
-import supplyChain from '../../../docs/架构安全性/11-安全开发与供应链.md?raw'
-import incident from '../../../docs/架构安全性/12-审计监控与事件响应.md?raw'
-import device from '../../../docs/架构安全性/13-设备身份与设备安全.md?raw'
-import aiSecurity from '../../../docs/架构安全性/15-AI系统安全.md?raw'
 
-type BookPart = '导言' | '第一部分' | '第二部分' | '第三部分' | '第四部分'
+type BookPart = '导言' | '第二部分'
 type Chapter = { id: string; part: BookPart; title: string; description: string; source: string }
 
 const chapters: Chapter[] = [
   { id: 'introduction', part: '导言', title: '引言', description: '从安全问题的隐藏边界开始，建立一套可复用的工程判断方法。', source: introduction },
-  { id: 'architecture', part: '第一部分', title: '架构安全性总览', description: '建立能力地图、贯穿案例与安全工作的边界。', source: architecture },
-  { id: 'threat-model', part: '第一部分', title: '威胁建模与安全原则', description: '先说清楚要保护什么，再讨论攻击者和控制。', source: threatModel },
-  { id: 'crypto', part: '第二部分', title: '不依赖深数学的密码学', description: '密码学工具如何回应真实系统里的安全问题。', source: cryptoOverview },
+  { id: 'crypto', part: '第二部分', title: '第二部分导读', description: '在不展开完整数学推导的前提下，建立密码学的工程判断。', source: cryptoOverview },
   { id: 'randomness', part: '第二部分', title: '随机数、秘密、盐与 Nonce', description: '理解猜测、重放、密码存储和加密中的不同随机值。', source: randomness },
   { id: 'hashes', part: '第二部分', title: '哈希、MAC 与密码存储', description: '同样是摘要，为什么不能互换。', source: hashes },
   { id: 'integrity', part: '第二部分', title: '加密还必须考虑完整性', description: '看不懂不等于改不了，保密与完整性必须一起设计。', source: integrity },
   { id: 'keys', part: '第二部分', title: '公私钥、数字签名与证书', description: '公钥公开以后，凭什么相信它。', source: keys },
   { id: 'tls', part: '第二部分', title: 'TLS 与密钥生命周期', description: '把协议、证书和密钥的生命周期放回完整系统。', source: tls },
-  { id: 'authentication', part: '第三部分', title: '认证', description: '认证标准、Web 认证和现代身份生命周期。', source: authentication },
-  { id: 'authorization', part: '第三部分', title: '授权', description: '角色、资源、委托与最终权限裁决。', source: authorization },
-  { id: 'credentials', part: '第三部分', title: '凭证', description: 'Cookie、Session、JWT 与凭证失效。', source: credentials },
-  { id: 'confidentiality', part: '第三部分', title: '保密', description: '密码存储、客户端加密与保密边界。', source: confidentiality },
-  { id: 'secrets', part: '第三部分', title: '密钥与秘密管理', description: '秘密的生命周期、轮换、审计与泄漏处置。', source: secrets },
-  { id: 'privacy', part: '第三部分', title: '数据保护与隐私', description: '数据清单、目的限制、多租户与隐私边界。', source: privacy },
-  { id: 'transport', part: '第三部分', title: '传输', description: '摘要、加密、签名、证书与传输安全层。', source: transport },
-  { id: 'validation', part: '第四部分', title: '验证', description: '合法输入不等于有效操作，验证要落在正确边界。', source: validation },
-  { id: 'api-security', part: '第四部分', title: '应用、API 与业务安全', description: '标识符、对象权限、业务状态与客户端边界。', source: apiSecurity },
-  { id: 'supply-chain', part: '第四部分', title: '安全开发、供应链与运行平台', description: '从开发检查走到制品信任链和运行时。', source: supplyChain },
-  { id: 'incident-response', part: '第四部分', title: '审计、检测、事件响应与恢复', description: '留下证据，识别异常，并把系统带回可信状态。', source: incident },
-  { id: 'device-security', part: '第四部分', title: '设备身份与设备安全', description: '设备证明、绑定、安全启动、更新与退役。', source: device },
-  { id: 'ai-security', part: '第四部分', title: 'AI 系统安全', description: '提示注入、工具调用、委托权限与模型供应链。', source: aiSecurity },
 ]
 
-const partOrder: BookPart[] = ['导言', '第一部分', '第二部分', '第三部分', '第四部分']
+const partOrder: BookPart[] = ['导言', '第二部分']
 
 function titleFromMarkdown(source: string) { return source.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? '未命名章节' }
 
-const internalRoutes: Record<string, string> = {
-  '00-架构安全性总览.md': 'architecture', '01-威胁建模与安全原则.md': 'threat-model',
-  '02-认证.md': 'authentication', '03-授权.md': 'authorization', '04-凭证.md': 'credentials',
-  '05-保密.md': 'confidentiality', '06-密钥与秘密管理.md': 'secrets', '07-数据保护与隐私.md': 'privacy',
-  '08-传输.md': 'transport', '09-验证.md': 'validation', '10-应用与API安全.md': 'api-security',
-  '11-安全开发与供应链.md': 'supply-chain', '12-审计监控与事件响应.md': 'incident-response',
-  '13-设备身份与设备安全.md': 'device-security', '15-AI系统安全.md': 'ai-security',
-}
+const internalRoutes: Record<string, string> = {}
 
 function normalizeBookUrl(url: string) {
   const file = decodeURIComponent(url).split('/').pop() ?? ''
