@@ -1,17 +1,23 @@
 :root {
-  font-family: Inter, "PingFang SC", "Microsoft YaHei", ui-sans-serif, system-ui, sans-serif;
-  color: #162033;
-  background: #f4f7fb;
+  font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+  color: #1f2926;
+  background: #f8f8f4;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --primary: #3159d9;
-  --navy: #18223a;
-  --muted: #6c7890;
-  --border: #e3e8f1;
+  --paper: #f8f8f4;
+  --ink: #1f2926;
+  --ink-soft: #58645f;
+  --muted: #87908b;
+  --muted-2: #b8c0ba;
+  --line: #e2e5de;
+  --soft: #f0f1eb;
+  --accent: #277361;
 }
 * { box-sizing: border-box; }
 html, body, #root { min-width: 320px; min-height: 100%; }
 body { min-height: 100vh; margin: 0; }
 button, input, textarea, select { font: inherit; }
 button { color: inherit; }
+html[data-theme="dark"] { --paper: #17201e; --ink: #edf2eb; --ink-soft: #bbc8c0; --muted: #8f9f96; --muted-2: #607069; --line: #2c3a35; --soft: #202c28; --accent: #62b39b; }
+html { scroll-behavior: smooth; }
 svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
