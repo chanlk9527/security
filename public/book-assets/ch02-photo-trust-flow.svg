@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="520" viewBox="0 0 1080 520" role="img" aria-labelledby="title desc">
+  <title id="title">一次原图查看中的数据流与信任判断</title>
+  <desc id="desc">浏览器跨过边界 B1 向相册服务提交照片编号与会话凭据。相册服务查询数据库中的归属与分享关系，作出授权决定，再跨过边界 B2 以服务身份读取对象存储。图片经过相册服务返回浏览器。浏览器不能在本图假设下直接读取存储。</desc>
+  <defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto-start-reverse"><path d="M0 0 L8 4 L0 8 Z" fill="#42576b"/></marker></defs>
+  <rect width="1080" height="520" rx="18" fill="#f7f9fc"/>
+  <g font-family="'Microsoft YaHei','Noto Sans CJK SC',sans-serif" fill="#203347">
+    <text x="36" y="44" font-size="22" font-weight="700">一张照片交付前的两层许可</text>
+    <text x="36" y="75" font-size="16" fill="#516579">业务层判断乙能否查看；存储层判断服务能否读取。</text>
+    <path d="M290 116 V411 M772 116 V411" fill="none" stroke="#ac6b25" stroke-width="2" stroke-dasharray="7 7"/>
+    <text x="290" y="107" text-anchor="middle" fill="#8b5117" font-size="17">B1 用户 / 平台</text>
+    <text x="772" y="107" text-anchor="middle" fill="#8b5117" font-size="17">B2 业务 / 存储</text>
+    <rect x="34" y="186" width="172" height="124" rx="12" fill="#fff" stroke="#bac9d7" stroke-width="2"/>
+    <text x="120" y="220" text-anchor="middle" font-size="22" font-weight="700">乙的浏览器</text>
+    <text x="120" y="250" text-anchor="middle" font-size="16">提交目标与凭据</text>
+    <text x="120" y="280" text-anchor="middle" font-size="16">接收照片内容</text>
+    <rect x="404" y="182" width="228" height="144" rx="12" fill="#eaf3f4" stroke="#458083" stroke-width="2"/>
+    <text x="518" y="216" text-anchor="middle" font-size="22" font-weight="700">相册服务</text>
+    <text x="518" y="248" text-anchor="middle" font-size="17">验证会话 → 识别乙</text>
+    <text x="518" y="278" text-anchor="middle" font-size="17">查询归属与分享关系</text>
+    <text x="518" y="307" text-anchor="middle" font-size="17" font-weight="700">决定是否返回 P17</text>
+    <rect x="874" y="186" width="172" height="124" rx="12" fill="#fff" stroke="#bac9d7" stroke-width="2"/>
+    <text x="960" y="222" text-anchor="middle" font-size="22" font-weight="700">对象存储</text>
+    <text x="960" y="253" text-anchor="middle" font-size="16">识别相册服务</text>
+    <text x="960" y="282" text-anchor="middle" font-size="16">按其存储权限读取</text>
+    <rect x="404" y="406" width="228" height="70" rx="10" fill="#fff" stroke="#bac9d7" stroke-width="2"/>
+    <text x="518" y="435" text-anchor="middle" font-size="19" font-weight="700">数据库</text>
+    <text x="518" y="460" text-anchor="middle" font-size="16">照片归属、分享关系</text>
+    <g fill="none" stroke="#42576b" stroke-width="2" marker-end="url(#arrow)">
+      <path d="M206 216 H395"/>
+      <path d="M404 293 H215"/>
+      <path d="M632 216 H865"/>
+      <path d="M874 293 H641"/>
+      <path d="M470 326 V397"/>
+      <path d="M565 406 V335"/>
+    </g>
+    <g font-size="15" fill="#354b5f" text-anchor="middle">
+      <rect x="211" y="166" width="184" height="40" fill="#f7f9fc"/>
+      <text x="303" y="182">P17 + 会话凭据</text>
+      <text x="303" y="202">请求查看原图</text>
+      <rect x="238" y="266" width="128" height="21" fill="#f7f9fc"/>
+      <text x="302" y="282">获准后返回图片</text>
+      <rect x="640" y="166" width="226" height="40" fill="#f7f9fc"/>
+      <text x="753" y="182">服务凭据 + 对象标识</text>
+      <text x="753" y="202">授权通过后发起读取</text>
+      <rect x="717" y="266" width="76" height="21" fill="#f7f9fc"/>
+      <text x="755" y="282">图片字节</text>
+      <text x="437" y="369">查询</text>
+      <text x="598" y="369">记录</text>
+    </g>
+    <text x="36" y="499" font-size="15" fill="#516579">本图假设：浏览器经相册服务取得图片；对象存储不向浏览器开放匿名读取。</text>
+  </g>
+</svg>
